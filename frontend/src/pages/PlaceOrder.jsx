@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import  { useContext, useState } from 'react'
 import Title from '../components/Title'
 import CartTotal from '../components/CartTotal'
 import { assets } from '../assets/frontend_assets/assets'
@@ -64,7 +64,7 @@ const PlaceOrder = () => {
   
       switch (method) {
         case 'cod':
-          const response = await axios.post(`${backendUrl}/api/order/place`, orderData, {
+          const response = await axios.post(`${backendUrl} api/order/place`, orderData, {
             headers:  {
               Authorization: `Bearer ${token}`, // Use Bearer token here
             },

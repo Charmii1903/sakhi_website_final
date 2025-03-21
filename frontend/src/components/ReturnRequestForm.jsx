@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import axios from 'axios';
 import { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
@@ -18,7 +18,7 @@ const ReturnRequestForm = ({ orderId, productId }) => {
 
         try {
             const response = await axios.post(
-                `${backendUrl}/api/return/create`,
+                `${backendUrl} api/return/create`,
                 {
                     orderId,
                     productId,

@@ -175,7 +175,7 @@ const Orders = () => {
   
       console.log('Fetching orders with token:', token);
       const response = await axios.post(
-        `${backendUrl}/api/order/userorders`,
+        `${backendUrl} api/order/userorders`,
         {},
         {
           headers: {
@@ -239,7 +239,7 @@ const Orders = () => {
   
     try {
       const response = await axios.post(
-        `${backendUrl}/api/return/create`,
+        `${backendUrl} api/return/create`,
         requestData,
         {
           headers: {

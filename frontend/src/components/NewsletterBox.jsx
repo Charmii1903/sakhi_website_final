@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 const NewsletterBox = () => {
     const [message, setMessage] = useState('');
@@ -9,7 +9,7 @@ const NewsletterBox = () => {
         const email = event.target.email.value;
 
         try {
-            const response = await fetch(`${backendUrl}/api/newsletter/subscribe`, {
+            const response = await fetch(`${backendUrl} api/newsletter/subscribe`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email }),

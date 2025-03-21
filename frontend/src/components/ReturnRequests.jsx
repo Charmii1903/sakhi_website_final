@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const ViewReturnRequests = () => {
@@ -7,7 +7,7 @@ const ViewReturnRequests = () => {
 
   useEffect(() => {
     const fetchReturns = async () => {
-      const response = await axios.get('/api/return');
+      const response = await axios.get(' api/return');
       setReturns(response.data.data);
     };
 

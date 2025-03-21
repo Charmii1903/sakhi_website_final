@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { ShopContext } from "../context/ShopContext";
 import ProductItem from "./ProductItem";
@@ -10,7 +10,7 @@ const Recommendations = ({ userId }) => {
   useEffect(() => {
     const fetchRecommendations = async () => {
       try {
-        const response = await axios.get(`${backendUrl}/api/recommender/recommendations/${userId}`);
+        const response = await axios.get(`${backendUrl} api/recommender/recommendations/${userId}`);
         setRecommendations(response.data.recommendations || []);
       } catch (error) {
         console.error("Error fetching recommendations:", error);

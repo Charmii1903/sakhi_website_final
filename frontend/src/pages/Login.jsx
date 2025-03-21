@@ -144,7 +144,7 @@
 
 // export default Login
 
-import React, { useContext, useEffect, useState } from 'react';
+import  { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -154,7 +154,7 @@ const Login = () => {
   const sendVerificationOtp = async () => {
     try {
       axios.defaults.withCredentials = true;
-      const { data } = await axios.post(backendUrl + '/api/user/send-verify-otp');
+      const { data } = await axios.post(backendUrl + ' api/user/send-verify-otp');
       if (data.success) {
         navigate('/email-verify');
         toast.success(data.message);
@@ -180,7 +180,7 @@ const Login = () => {
 
     try {
       if (currentState === 'Sign-Up') {
-        const response = await axios.post(backendUrl + '/api/user/register', { name, email, password, address, phone });
+        const response = await axios.post(backendUrl + ' api/user/register', { name, email, password, address, phone });
         if (response.data.success) {
           setToken(response.data.token);
           toast.success('Registration successful! Please verify your email.');
@@ -191,7 +191,7 @@ const Login = () => {
           toast.error(response.data.message);
         }
       } else {
-        const response = await axios.post(backendUrl + '/api/user/login', { email, password });
+        const response = await axios.post(backendUrl + ' api/user/login', { email, password });
         if (response.data.token) {
           setToken(response.data.token);
           localStorage.setItem('token', response.data.token);

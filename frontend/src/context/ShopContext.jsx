@@ -36,7 +36,7 @@ const ShopContextProvider = ({ children }) => {
     if (token) {
       try {
         await axios.post(
-          `${backendUrl}/api/cart/add`,
+          `${backendUrl} api/cart/add`,
           { itemId, size },
           { headers: { token } }
         );
@@ -64,7 +64,7 @@ const ShopContextProvider = ({ children }) => {
     if (token) {
       try {
         await axios.post(
-          `${backendUrl}/api/cart/update`,
+          `${backendUrl} api/cart/update`,
           { itemId, size, quantity },
           { headers: { token } }
         );
@@ -89,7 +89,7 @@ const ShopContextProvider = ({ children }) => {
   // Fetch products data
   const getProductsData = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/api/product/list`);
+      const response = await axios.get(`${backendUrl} api/product/list`);
       if (response.data.success) {
         setProducts(response.data.products);
       } else {
@@ -105,7 +105,7 @@ const ShopContextProvider = ({ children }) => {
   const getUserCart = async (userToken) => {
     try {
       const response = await axios.post(
-        `${backendUrl}/api/cart/get`,
+        `${backendUrl} api/cart/get`,
         {},
         { headers: { token: userToken } }
       );
@@ -123,7 +123,7 @@ const ShopContextProvider = ({ children }) => {
     if (!token) return;
 
     try {
-      const response = await axios.get(`${backendUrl}/api/profile/profile`, {
+      const response = await axios.get(`${backendUrl} api/profile/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -170,7 +170,7 @@ const ShopContextProvider = ({ children }) => {
       try {
         if (!token) return;
   
-        const response = await axios.get(`${backendUrl}/api/wishlist`, {
+        const response = await axios.get(`${backendUrl} api/wishlist`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setWishlist(response.data.wishlist || []);
