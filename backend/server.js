@@ -28,6 +28,7 @@ app.use(cookieParser());
 
 // ✅ Fix CORS Issues
 const allowedOrigins = [
+   ' https://67dd44d084c0730076fa2ee8--sakhifrontend.netlify.app',
     'https://sakhi-frontend.vercel.app',
     'https://sakhi-adminn.vercel.app'  // Ensure admin panel is allowed
 ];
