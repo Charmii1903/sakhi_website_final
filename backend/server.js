@@ -26,8 +26,11 @@ connectCloudinary();
 app.use(express.json());
 app.use(cookieParser());
 
-// ✅ CORS CONFIGURATION - FIXED
-const allowedOrigins = ['https://sakhi-frontendd.vercel.app', 'https://admin.sakhi-frontendd.vercel.app'];
+// ✅ Fix CORS Issues
+const allowedOrigins = [
+    'https://sakhi-frontendd.vercel.app',
+    'https://sakhi-adminn.vercel.app'  // Ensure admin panel is allowed
+];
 
 app.use(cors({
     origin: function (origin, callback) {
@@ -37,18 +40,20 @@ app.use(cors({
             callback(new Error('Not allowed by CORS'));
         }
     },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow all required HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allow custom headers
-    credentials: true, // Allow cookies and authentication
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow required methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allow required headers
+    credentials: true, // Allow cookies/auth tokens
 }));
 
-// ✅ FIX PRE-FLIGHT REQUESTS (For OPTIONS requests)
+// ✅ Fix Preflight Requests (`OPTIONS`)
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://sakhi-frontendd.vercel.app');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', 'true');
-
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.header('Access-Control-Allow-Origin', origin);
+        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        res.header('Access-Control-Allow-Credentials', 'true');
+    }
     if (req.method === 'OPTIONS') {
         return res.sendStatus(200);
     }
