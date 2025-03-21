@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // ✅ CORS CONFIGURATION - FIXED
-const allowedOrigins = ['https://sakhi-frontendd.vercel.app'];
+const allowedOrigins = ['https://sakhi-frontendd.vercel.app', 'https://admin.sakhi-frontendd.vercel.app'];
 
 app.use(cors({
     origin: function (origin, callback) {
