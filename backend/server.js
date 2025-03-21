@@ -27,7 +27,7 @@ connectCloudinary();
 app.use(express.json());
 
 // Updated CORS Configuration
-const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174']; // Add all frontend URLs here
+const allowedOrigins = ['https://sakhi-frontendd.vercel.app']; // Add all frontend URLs here
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
