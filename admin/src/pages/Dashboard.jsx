@@ -29,7 +29,7 @@ const Dashboard = ({token}) => {
 
     const fetchSalesData = async () => {
       try {
-        const response = await axios.get(`${backendUrl} api/order/sales`, { headers: { token } });
+        const response = await axios.get(`${backendUrl} /api/order/sales`, { headers: { token } });
         if (response.data.success) {
           setSalesData(response.data.data);
         } else {
