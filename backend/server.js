@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 // ✅ Fix CORS Issues
 const allowedOrigins = [
-   ' https://67dd44d084c0730076fa2ee8--sakhifrontend.netlify.app',
+    'https://67dd44d084c0730076fa2ee8--sakhifrontend.netlify.app',
     'https://sakhi-frontend.vercel.app',
     'https://sakhi-adminn.vercel.app'  // Ensure admin panel is allowed
 ];
@@ -42,7 +42,7 @@ app.use(cors({
         }
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow required methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allow required headers
+    allowedHeaders: ['Content-Type', 'Authorization', 'token'], // ✅ Added "token" here
     credentials: true, // Allow cookies/auth tokens
 }));
 
@@ -52,7 +52,7 @@ app.use((req, res, next) => {
     if (allowedOrigins.includes(origin)) {
         res.header('Access-Control-Allow-Origin', origin);
         res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, token');
         res.header('Access-Control-Allow-Credentials', 'true');
     }
     if (req.method === 'OPTIONS') {
@@ -65,7 +65,7 @@ app.use((req, res, next) => {
 app.use('/api/user', userRouter);
 app.use('/api/product', productRouter);
 app.use('/api/cart', cartRouter);
-app.use('/api/order', orderRouter);
+app.use('/api/order', orderRouter);  // ✅ Ensure this is correct
 app.use('/api/profile', profileRouter);
 app.use('/api/newsletter', newsletterRouter);
 app.use('/api/reviews', reviewRouter);
